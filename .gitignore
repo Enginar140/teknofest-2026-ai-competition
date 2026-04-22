@@ -3,3 +3,6 @@ data/teknofest_drive/
 
 # Ignore large local dataset cache
 teknofest_ai_system/data/datasets/
+
+# Ignore nested repository metadata
+havacilikta-yapay-zeka-yarismasi/.git/
