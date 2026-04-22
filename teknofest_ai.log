@@ -1,0 +1,157 @@
+2026-04-21 20:13:16,709 - __main__ - INFO - ============================================================
+2026-04-21 20:13:16,782 - __main__ - INFO - ============================================================
+2026-04-21 21:11:26,235 - __main__ - INFO - ============================================================
+2026-04-21 21:11:26,236 - __main__ - INFO - TEKNOFEST 2026 - Havacılıkta Yapay Zeka Yarışması
+2026-04-21 21:11:26,237 - __main__ - INFO - Sistem başlatılıyor...
+2026-04-21 21:11:26,237 - __main__ - INFO - ============================================================
+2026-04-21 21:11:26,243 - __main__ - INFO - Dizinler hazırlandı
+2026-04-21 21:11:26,502 - core.config_manager - WARNING - Konfigürasyon dosyası bulunamadı: config\default_config.json
+2026-04-21 21:11:26,502 - __main__ - INFO - Konfigürasyon yüklendi
+2026-04-21 21:11:26,555 - __main__ - INFO - PyQt6 uygulaması oluşturuldu
+2026-04-21 21:11:28,022 - __main__ - INFO - Ana pencere gösterildi
+2026-04-21 21:11:28,022 - __main__ - INFO - Sistem başarıyla başlatıldı
+2026-04-21 21:12:09,197 - core.config_manager - INFO - Konfigürasyon kaydedildi: config\default_config.json
+2026-04-21 22:59:50,637 - __main__ - INFO - ============================================================
+2026-04-21 22:59:50,638 - __main__ - INFO - TEKNOFEST 2026 - Havacılıkta Yapay Zeka Yarışması
+2026-04-21 22:59:50,639 - __main__ - INFO - Sistem başlatılıyor...
+2026-04-21 22:59:50,639 - __main__ - INFO - ============================================================
+2026-04-21 22:59:50,640 - __main__ - INFO - Dizinler hazırlandı
+2026-04-21 22:59:51,264 - core.config_manager - INFO - Konfigürasyon yüklendi: config\default_config.json
+2026-04-21 22:59:51,264 - __main__ - INFO - Konfigürasyon yüklendi
+2026-04-21 22:59:51,327 - __main__ - INFO - PyQt6 uygulaması oluşturuldu
+2026-04-21 23:00:00,826 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-21 23:00:00,920 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-21 23:00:01,329 - __main__ - INFO - Ana pencere gösterildi
+2026-04-21 23:00:01,329 - __main__ - INFO - Sistem başarıyla başlatıldı
+2026-04-21 23:00:14,702 - ui.panels.camera_panel - INFO - ❌ Model bulunamadı: models\yolov8m.pt
+2026-04-21 23:00:19,553 - ui.panels.camera_panel - INFO - ❌ Model bulunamadı: models\yolov8m.pt
+2026-04-21 23:00:27,520 - ui.panels.camera_panel - INFO - ❌ Model bulunamadı: models\yolov8l.pt
+2026-04-21 23:00:31,448 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-21 23:00:31,479 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-21 23:00:31,480 - ui.panels.camera_panel - INFO - ▶️ CAMERA işleme başlatıldı - Görev: detection
+2026-04-21 23:00:47,131 - ui.panels.camera_panel - INFO - ⏹️ İşlem durduruldu
+2026-04-21 23:00:47,841 - ui.panels.camera_panel - INFO - ❌ Model bulunamadı: models\yolov8m.pt
+2026-04-21 23:00:51,661 - ui.panels.camera_panel - INFO - ❌ Model bulunamadı: models\yolov8m.pt
+2026-04-21 23:00:54,913 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8s.pt
+2026-04-21 23:00:55,167 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8s
+2026-04-21 23:00:55,171 - ui.panels.camera_panel - INFO - ▶️ CAMERA işleme başlatıldı - Görev: detection
+2026-04-21 23:00:57,244 - ui.panels.camera_panel - INFO - ⏹️ İşlem durduruldu
+2026-04-21 23:01:05,997 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-21 23:01:06,052 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-21 23:01:06,053 - ui.panels.camera_panel - INFO - ▶️ CAMERA işleme başlatıldı - Görev: detection
+2026-04-21 23:02:52,702 - core.config_manager - INFO - Konfigürasyon kaydedildi: config\default_config.json
+2026-04-21 23:05:48,237 - __main__ - INFO - ============================================================
+2026-04-21 23:05:48,238 - __main__ - INFO - TEKNOFEST 2026 - Havacılıkta Yapay Zeka Yarışması
+2026-04-21 23:05:48,238 - __main__ - INFO - Sistem başlatılıyor...
+2026-04-21 23:05:48,238 - __main__ - INFO - ============================================================
+2026-04-21 23:05:48,240 - __main__ - INFO - Dizinler hazırlandı
+2026-04-21 23:05:48,880 - core.config_manager - INFO - Konfigürasyon yüklendi: config\default_config.json
+2026-04-21 23:05:48,881 - __main__ - INFO - Konfigürasyon yüklendi
+2026-04-21 23:05:48,943 - __main__ - INFO - PyQt6 uygulaması oluşturuldu
+2026-04-21 23:05:58,968 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-21 23:05:59,076 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-21 23:05:59,485 - __main__ - INFO - Ana pencere gösterildi
+2026-04-21 23:05:59,485 - __main__ - INFO - Sistem başarıyla başlatıldı
+2026-04-21 23:06:28,568 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-21 23:06:28,628 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-21 23:06:28,631 - ui.panels.camera_panel - INFO - ▶️ CAMERA işleme başlatıldı - Görev: detection
+2026-04-21 23:06:37,184 - ui.panels.camera_panel - INFO - ⏹️ İşlem durduruldu
+2026-04-21 23:06:38,000 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-21 23:06:38,060 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-21 23:06:38,062 - ui.panels.camera_panel - INFO - ▶️ CAMERA işleme başlatıldı - Görev: detection
+2026-04-21 23:08:34,683 - ui.panels.camera_panel - INFO - 🔍 Görüntü Eşleme modu seçildi - Referans nesneler eşleştirilecek
+2026-04-21 23:08:38,692 - ui.panels.camera_panel - INFO - ⏹️ İşlem durduruldu
+2026-04-21 23:08:40,076 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-21 23:08:40,215 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-21 23:08:40,217 - ui.panels.camera_panel - INFO - ▶️ CAMERA işleme başlatıldı - Görev: matching
+2026-04-21 23:08:50,902 - ui.panels.camera_panel - INFO - 📌 Pozisyon Tespiti modu seçildi - Kamera parametreleri kullanılacak
+2026-04-21 23:08:51,479 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:08:55,146 - ui.panels.camera_panel - INFO - 🔍 Görüntü Eşleme modu seçildi - Referans nesneler eşleştirilecek
+2026-04-21 23:08:58,659 - ui.panels.camera_panel - INFO - ⏹️ İşlem durduruldu
+2026-04-21 23:09:01,508 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:09:02,125 - ui.panels.camera_panel - INFO - 🔍 Görüntü Eşleme modu seçildi - Referans nesneler eşleştirilecek
+2026-04-21 23:09:03,700 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:09:03,700 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-21 23:09:03,702 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:09:03,704 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-21 23:09:04,333 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:09:04,335 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-21 23:09:04,337 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:09:04,338 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-21 23:09:04,339 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:09:04,339 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-21 23:09:04,341 - ui.panels.camera_panel - INFO - 🎯 Taşıt, İnsan, UAP (Uçan Araba Park), UAİ (Uçan Ambulans İniş) tespiti yapılacak
+2026-04-21 23:09:04,341 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-21 23:09:05,514 - ui.main_window - INFO - İşlem başlatıldı
+2026-04-22 01:25:43,400 - __main__ - INFO - ============================================================
+2026-04-22 01:25:43,402 - __main__ - INFO - TEKNOFEST 2026 - Havacılıkta Yapay Zeka Yarışması
+2026-04-22 01:25:43,404 - __main__ - INFO - Sistem başlatılıyor...
+2026-04-22 01:25:43,405 - __main__ - INFO - ============================================================
+2026-04-22 01:25:43,418 - __main__ - INFO - Dizinler hazırlandı
+2026-04-22 01:25:44,328 - core.config_manager - INFO - Konfigürasyon yüklendi: config\default_config.json
+2026-04-22 01:25:44,328 - __main__ - INFO - Konfigürasyon yüklendi
+2026-04-22 01:25:44,544 - __main__ - INFO - PyQt6 uygulaması oluşturuldu
+2026-04-22 01:26:00,579 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-22 01:26:00,722 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-22 01:26:01,343 - __main__ - INFO - Ana pencere gösterildi
+2026-04-22 01:26:01,343 - __main__ - INFO - Sistem başarıyla başlatıldı
+2026-04-22 01:26:07,547 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:26:07,550 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:26:08,621 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-22 01:26:08,626 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-22 01:26:08,635 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-22 01:26:08,639 - ui.main_window - INFO - Görev seçildi: task3
+2026-04-22 01:26:58,634 - ui.panels.camera_panel - INFO - 📌 Pozisyon Tespiti modu - Kamera kalibrasyonu ve VO kullanılacak
+2026-04-22 01:26:59,610 - ui.panels.camera_panel - INFO - 🎯 Nesne Tespiti modu - Taşıt, İnsan, UAP, UAİ tespiti
+2026-04-22 01:27:03,437 - ui.panels.camera_panel - INFO - 🔍 Görüntü Eşleme modu - Referans nesneler eşleştirilecek
+2026-04-22 01:27:04,723 - ui.panels.camera_panel - INFO - 📌 Pozisyon Tespiti modu - Kamera kalibrasyonu ve VO kullanılacak
+2026-04-22 01:27:09,741 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:27:09,742 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:27:09,744 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:27:09,745 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:27:09,750 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:27:09,752 - ui.main_window - INFO - Görev seçildi: task2
+2026-04-22 01:27:11,736 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,738 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,739 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,741 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,742 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,744 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,746 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,803 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,804 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,805 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,807 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,808 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:27:11,809 - ui.main_window - INFO - Görev seçildi: task1
+2026-04-22 01:28:31,131 - core.config_manager - INFO - Konfigürasyon kaydedildi: config\default_config.json
+2026-04-22 01:33:10,419 - __main__ - INFO - ============================================================
+2026-04-22 01:33:10,420 - __main__ - INFO - TEKNOFEST 2026 - Havacılıkta Yapay Zeka Yarışması
+2026-04-22 01:33:10,420 - __main__ - INFO - Sistem başlatılıyor...
+2026-04-22 01:33:10,420 - __main__ - INFO - ============================================================
+2026-04-22 01:33:10,422 - __main__ - INFO - Dizinler hazırlandı
+2026-04-22 01:33:10,886 - core.config_manager - INFO - Konfigürasyon yüklendi: config\default_config.json
+2026-04-22 01:33:10,887 - __main__ - INFO - Konfigürasyon yüklendi
+2026-04-22 01:33:10,989 - __main__ - INFO - PyQt6 uygulaması oluşturuldu
+2026-04-22 01:33:20,821 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-22 01:33:20,921 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-22 01:33:21,550 - __main__ - INFO - Ana pencere gösterildi
+2026-04-22 01:33:21,551 - __main__ - INFO - Sistem başarıyla başlatıldı
+2026-04-22 01:33:33,168 - ui.panels.camera_panel - INFO - 📌 Pozisyon Tespiti modu - Kamera kalibrasyonu ve VO kullanılacak
+2026-04-22 01:33:34,275 - ui.panels.camera_panel - INFO - 🔍 Görüntü Eşleme modu - Referans nesneler eşleştirilecek
+2026-04-22 01:33:39,361 - ui.panels.camera_panel - INFO - 📌 Pozisyon Tespiti modu - Kamera kalibrasyonu ve VO kullanılacak
+2026-04-22 01:33:40,603 - ui.panels.camera_panel - INFO - 🎯 Nesne Tespiti modu - Taşıt, İnsan, UAP, UAİ tespiti
+2026-04-22 02:09:49,817 - core.config_manager - INFO - Konfigürasyon kaydedildi: config\default_config.json
+2026-04-22 02:37:34,131 - __main__ - INFO - ============================================================
+2026-04-22 02:37:34,132 - __main__ - INFO - TEKNOFEST 2026 - Havacılıkta Yapay Zeka Yarışması
+2026-04-22 02:37:34,133 - __main__ - INFO - Sistem başlatılıyor...
+2026-04-22 02:37:34,133 - __main__ - INFO - ============================================================
+2026-04-22 02:37:34,145 - __main__ - INFO - Dizinler hazırlandı
+2026-04-22 02:37:40,250 - core.config_manager - INFO - Konfigürasyon yüklendi: config\default_config.json
+2026-04-22 02:37:40,250 - __main__ - INFO - Konfigürasyon yüklendi
+2026-04-22 02:37:40,767 - __main__ - INFO - PyQt6 uygulaması oluşturuldu
+2026-04-22 02:38:12,264 - ui.panels.camera_panel - INFO - 🔄 Model yükleniyor: models\yolov8n.pt
+2026-04-22 02:38:12,492 - ui.panels.camera_panel - INFO - ✅ Model yüklendi: yolov8n
+2026-04-22 02:38:13,010 - __main__ - INFO - Ana pencere gösterildi
+2026-04-22 02:38:13,010 - __main__ - INFO - Sistem başarıyla başlatıldı
+2026-04-22 03:55:27,086 - core.config_manager - INFO - Konfigürasyon kaydedildi: config\default_config.json

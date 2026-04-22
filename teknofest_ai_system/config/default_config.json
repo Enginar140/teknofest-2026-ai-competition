@@ -1,0 +1,171 @@
+{
+  "system": {
+    "name": "TEKNOFEST 2026 AI System",
+    "version": "1.0.0",
+    "theme": "dark",
+    "language": "tr"
+  },
+  "camera": {
+    "selected": "rgb_4k_2025",
+    "cameras": {
+      "rgb_2024": {
+        "name": "RGB Kamera 2024",
+        "focal_length": [
+          1413.3,
+          1418.8
+        ],
+        "principal_point": [
+          950.06,
+          543.38
+        ],
+        "image_size": [
+          1080,
+          1920
+        ],
+        "radial_distortion": [
+          -0.0091,
+          0.0666
+        ],
+        "tangential_distortion": [
+          0,
+          0
+        ],
+        "skew": 0
+      },
+      "thermal_2025": {
+        "name": "Termal Kamera 2025",
+        "focal_length": [
+          731.8,
+          732.02
+        ],
+        "principal_point": [
+          319.24,
+          251.24
+        ],
+        "image_size": [
+          512,
+          640
+        ],
+        "radial_distortion": [
+          -0.3507,
+          0.1137
+        ],
+        "tangential_distortion": [
+          0,
+          0
+        ],
+        "skew": 0
+      },
+      "rgb_4k_2025": {
+        "name": "RGB 4K Kamera 2025",
+        "focal_length": [
+          2792.2,
+          2795.2
+        ],
+        "principal_point": [
+          1988.0,
+          1562.2
+        ],
+        "image_size": [
+          3000,
+          4000
+        ],
+        "radial_distortion": [
+          0.0798,
+          -0.1867
+        ],
+        "tangential_distortion": [
+          0,
+          0
+        ],
+        "skew": 0
+      }
+    }
+  },
+  "models": {
+    "teknofest_model_path": "",
+    "task1": {
+      "selected": "yolov8l",
+      "options": [
+        "yolov8n",
+        "yolov8s",
+        "yolov8m",
+        "yolov8l",
+        "yolov8x"
+      ],
+      "parameters": {
+        "confidence_threshold": 0.5,
+        "iou_threshold": 0.5,
+        "use_bytetrack": true,
+        "use_sahi": true,
+        "sahi_slice_height": 416,
+        "sahi_slice_width": 416,
+        "sahi_overlap_height_ratio": 0.2,
+        "sahi_overlap_width_ratio": 0.2
+      }
+    },
+    "task2": {
+      "selected": "vo_ekf",
+      "options": [
+        "vo_ekf",
+        "deepvo"
+      ],
+      "parameters": {
+        "use_ssr": true,
+        "use_orb_slam2": true,
+        "kalman_process_noise": 0.01,
+        "kalman_measurement_noise": 0.1,
+        "ssr_window_size": 10,
+        "dynamic_fast_threshold": true
+      }
+    },
+    "task3": {
+      "selected": "xoftr",
+      "options": [
+        "xoftr",
+        "lightglue",
+        "sift"
+      ],
+      "parameters": {
+        "confidence_threshold": 0.7,
+        "use_ensemble": true,
+        "ensemble_weights": [
+          0.5,
+          0.3,
+          0.2
+        ]
+      }
+    }
+  },
+  "server": {
+    "url": "http://127.0.0.1:5000/",
+    "team_name": "Team_001",
+    "password": "****",
+    "timeout": 30,
+    "retry_count": 3
+  },
+  "recording": {
+    "enabled": true,
+    "save_metrics": true,
+    "save_frames": false,
+    "save_video": true,
+    "output_dir": "./results/",
+    "csv_filename": "metrics.csv",
+    "video_codec": "mp4v",
+    "video_fps": 7.5
+  },
+  "ui": {
+    "window_width": 1600,
+    "window_height": 900,
+    "show_fps": true,
+    "show_latency": true,
+    "update_interval_ms": 100
+  },
+  "processing": {
+    "num_processes": 4,
+    "batch_size": 8,
+    "use_gpu": true,
+    "gpu_id": 0,
+    "num_workers": 8
+  }
+}

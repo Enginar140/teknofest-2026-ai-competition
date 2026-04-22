@@ -1,0 +1,5 @@
+# TEKNOFEST Drive indirmeleri (buyuk dosyalar)
+data/teknofest_drive/
+
+# Ignore large local dataset cache
+teknofest_ai_system/data/datasets/

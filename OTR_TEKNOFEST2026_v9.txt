@@ -1,0 +1,138 @@
+HAVACILIKTA YAPAY ZEKA YARIŞMASI
+ÖN TASARIM RAPORU
+TEKNOFEST 2026
+Nisan 2026
+İÇİNDEKİLER
+ŞEKİL LİSTESİ
+TABLO LİSTESİ
+KISALTMALAR
+1. Takım Şeması
+2. Proje Mevcut Durum Değerlendirmesi (10 Puan)
+3. Algoritmalar ve Sistem Mimarisi (30 Puan)
+   3.1. Veri Setleri (10 Puan)
+   3.2. Algoritmalar (15 Puan)
+   3.3. Sistem Mimarisi ve Akış Şemaları (5 Puan)
+4. Özgünlük (10 Puan)
+5. Proje Takvimi (10 Puan)
+6. Sonuçlar ve İnceleme (30 Puan)
+7. Kaynakça (5 Puan)
+8. Genel Rapor Düzeni (5 Puan)
+ŞEKİL LİSTESİ
+Şekil 1: 4-Process Asenkron Mimari Diyagramı (Bölüm 3.3)
+Şekil 2: Semantik Ölçek Kurtarma – Ray Casting Geometrisi (Bölüm 3.2)
+Şekil 3: Veri Akış Diyagramı – Tek Kare İşleme (Bölüm 3.3)
+Şekil 4: Karar Ağacı – GPS/VO Geçiş Mekanizması (Bölüm 3.3)
+Şekil 5: Karar Ağacı – İniş Alanı Uygunluk Hiyerarşisi (Bölüm 3.3)
+TABLO LİSTESİ
+Tablo 1: Takım Şeması (Bölüm 1)
+Tablo 2: VRAM ve Zaman Bütçesi (Bölüm 3.2)
+Tablo 3: Veri Seti Özeti (Bölüm 3.1)
+Tablo 4: Literatür Destekli Performans Tahminleri (Bölüm 6)
+Tablo 5: Proje Takvimi (Bölüm 5)
+Tablo 6: Kaynakça (Bölüm 7)
+Tablo 7: Genel Rapor Düzeni (Bölüm 8)
+KISALTMALAR
+1. TAKIM ŞEMASI
+Takım iki üyeden oluşmaktadır. Şartname gereği kişisel bilgilere yer verilmemekte; yalnızca teknik sorumluluklar belirtilmektedir.
+2. PROJE MEVCUT DURUM DEĞERLENDİRMESİ (10 Puan)
+Bu bölümde teorik tasarım değil, yürütülen somut mühendislik çalışmaları özetlenmektedir.
+Tamamlanan Çalışmalar:
+Donanım profili çıkarılmış, RTX 4060 8GB VRAM üzerinde YOLOv8m TensorRT FP16 için ~8–12 ms/kare latency ve SAHI adaptif kullanımı için ~60–70 ms/kare bütçe ölçümü yapılmıştır.
+Python GIL problemi analiz edilmiş; threading yerine multiprocessing.Process + shared_memory (zero-copy) mimarisine geçiş kararı alınmış ve 4-process izolasyon tasarımı tamamlanmıştır.
+ORB-SLAM2 monoküler VO'nun scale drift problemi tespit edilmiş; IMU gerektirmeyen Semantik Ölçek Kurtarma (SSR) yöntemi Ray Casting + Ground Plane + Kinematik EKF bileşenleriyle tasarlanmıştır.
+İniş alanı tespitinde YOLO'nun 'tanımsız nesne körlüğü' zafiyeti tanımlanmış; UAP/UAİ iç ROI piksel yoğunluk anomali filtresi ve Ellipse Fitting ile çözüm tasarlanmıştır.
+Termal görüntü senaryosu için XoFTR → LightGlue → Kalman Tracker üç kademeli failover hiyerarşisi oluşturulmuştur.
+ByteTrack MOT entegrasyonu, yarım nesne (truncation/occlusion) ve çerçeve kenarı kesilmesi senaryoları için temporal hafıza mekanizması olarak belirlenmiştir.
+Çevresel bozulma (yağmur, sis, ölü piksel, görüntü donması) tolerans katmanı için ORB-SLAM2 FAST threshold dinamik ayarı ve Albumentations tabanlı fiziksel hava koşulu veri artırımı tasarlanmıştır.
+VisDrone2019 ve UAVDT veri setleri indirilmiş; 70-90 derece nadir açı filtrelemesi ve termal veri seti (HIT-UAV) entegrasyon planı hazırlanmıştır.
+3. ALGORİTMALAR VE SİSTEM MİMARİSİ (30 PUAN)
+3.1. Veri Setleri (10 Puan)
+3.1.1. Nesne Tespiti (Görev 1)
+Veri Kalitesi Kontrolü:
+Sürücülü motosiklet/bisiklet etiketi 'İnsan' → 'Taşıt' olarak yeniden etiketlenmiştir (şartname gereği).
+Scooter: sürücüsüz → ID:0 (Taşıt), sürücülü → ID:1 (İnsan) olarak özel etiket dönüşümü uygulanmıştır.
+Uzamsal artırım: Random Erasing [K] (AAAI 2020), GridMask [L] (arXiv 2020) ve Cutout ile parçalı/kesilmiş nesne öğrenimi sağlanmıştır. Zhong et al. [K] Random Erasing'in VisDrone dahil detection benchmark'larında CNN'in occlusion genelleme kabiliyetini tutarlı biçimde artırdığını kanıtlamıştır. Chen et al. [L] GridMask'in tek bölge silen Cutout'a kıyasla daha dengeli bilgi silimi sağladığını göstermiştir.
+Fiziksel hava koşulu artırımı: Tremblay et al. (IJCV 2020) [M], fiziksel tabanlı yağmur/sis rendering'in temiz hava modelinin tespitinde ~%15 mAP düşüşüne yol açtığını; aynı pipeline ile fine-tuning'in bu kaybı büyük ölçüde geri kazandırdığını göstermiştir. UAV havadan tespitinde sisli koşulların etkisi Fang et al. (Remote Sensing 2023) [N] ile ölçülmüştür. Bu gerekçeyle Albumentations RandomRain, RandomFog, RandomSunFlare Gaussian gürültü yerine birincil artırım yöntemi olarak benimsenmiştir.
+Yönlü hareket bulanıklığı (Directional Motion Blur) ve Dead Pixel Masking, 7.5 FPS düşük yenileme hızı ve şartnamedeki ölü piksel senaryosu için eklenmiştir.
+3.1.2. Pozisyon Kestirimi (Görev 2)
+TEKNOFEST tarafından sağlanacak örnek video + referans koordinatlar: ORB-SLAM2 scale kalibrasyon ve Kinematik EKF ısınma verisi.
+EuRoC MAV Veri Seti: ORB-SLAM2 tracking loss ve relocalization süresi profiling testi.
+3.1.3. Görüntü Eşleme (Görev 3)
+Oturum başında sağlanan referans nesne görselleri. XoFTR [6] pseudo-thermal artırmayla eğitildiğinden ek termal veri ihtiyacı minimumdur.
+3.2. Algoritmalar (15 Puan)
+3.2.1. Donanım Profili ve Zaman/Bellek Bütçesi
+Donanım: Intel Core i5-12xxx, NVIDIA RTX 4060 8 GB VRAM, 16 GB RAM.
+3.2.2. Görev 1: Nesne Tespiti ve İniş Alanı Analizi
+Ana model olarak YOLOv8m [4] TensorRT FP16 formatına dönüştürülmüş ve deploy edilmiştir. Akyon et al. (ICIP 2022) [1] SAHI ile VisDrone'da +6.8% AP artışı bildirmiştir; adaptif eşik kullanan Zhang et al. (2023) [11] mAP50 = 45.6 elde etmiştir.
+ByteTrack Entegrasyonu:
+Zhang et al. (ECCV 2022) [F] tarafından sunulan ByteTrack, düşük güven skorlu tespitleri (confidence < 0.25) çöpe atmak yerine önceki karelerin yüksek skorlu yörüngeleriyle eşleştirir. Bu mekanizma çerçeve kenarından çıkan veya kısmen kapanan nesnelerin kaybedilmesini önler; False Negative sayısını azaltarak mAP'a doğrudan katkı sağlar.
+İniş Alanı Uygunluk Hiyerarşisi:
+Adım 1 – Ellipse Fitting: UAP/UAİ dairesine OpenCV ile elips oturtulur. Elipsin matematiksel denklemi görüntü sınırlarını kesiyorsa (x < 5 veya x > W–5, y < 5 veya y > H–5) → kısmi görünür → landing_status = 0.
+Adım 2 – Ground Footprint Kontrolü: Tespit edilen nesnenin bounding box alt kenarının orta noktası (x_bottom, y_bottom) elips içindeyse → gerçek ihlal. Yalnızca kutunun üst kısmı elipse değiyorsa → perspektif yanılgısı → landing_status = 0 (şartname kuralı).
+Adım 3 – Anomali Tespiti (Tanımsız Nesne): YOLO'nun tanımadığı nesneler (kaya, moloz, köpek) için UAP/UAİ iç ROI piksel yoğunluk analizi uygulanır. Standart sapmayı bozan renk/doku varyansı tespit edilirse → landing_status = 0. Bu mekanizma, 'detected_undefined_objects' JSON alanını doldurmaktan sorumludur.
+Adım 4 – Karar: Yukarıdaki üç koşulun hiçbiri tetiklenmiyorsa → landing_status = 1.
+Scooter Sınıflandırması:
+Scooter bounding box boyut eşiği, Process C'den sürekli beslenen ORB-SLAM2 VO z-ekseni çıktısından türetilen anlık irtifa ve scale_px_per_m oranına göre normalize edilmiştir. Bu mekanizma UAP/UAİ görüntüde olmasa bile çalışır; irtifa kaybı durumunda son geçerli oran korunur.
+Tren Wagon Ayrıştırması:
+SAHI [1] ile üretilen lokomotif/vagon tespitlerine Linear Alignment filtresi uygulanır: bounding box merkezleri arasındaki açı ray doğrultusuyla kıyaslanır (eşik ±15°). IoU > 0.3 çiftler birleştirilir (overdetection önleme); irtifadan normalize edilmiş beklenen vagon boyutu (15–20 m) dışındaki kutular elenir.
+Çevresel Bozulma Toleransı:
+Ölü piksel maskeleme: Kalibrasyon aşamasında statik maske oluşturulur; ORB-SLAM2 feature extractor'a iletilmeden önce maskelenen piksel bölgeleri susturulur.
+Yağmur/sis: ORB-SLAM2 FAST threshold değeri o karenin Shannon entropisine göre dinamik olarak ayarlanır. Düşük entropi (sis, homojen zemin) sahte köşe noktası yoğunluğunu artırdığından threshold yükseltilerek overdetection önlenir. Yüksek entropi (yağmur, gürültü) ise gerçek feature'ları maskeleyebileceğinden threshold düşürülür. Bu adaptasyon ORB-SLAM2'nin dahili adaptif eşik mekanizmasını yalnızca kare bazında değil sahne entropisi bazında genişletmektedir. Mapping fonksiyonu: threshold = base_thr + α·(H_max – H_frame), α simülasyon kalibrasyonuyla belirlenecektir.
+Görüntü donması: İki ardışık kare arasında SSIM (Structural Similarity Index) > 0.995 eşiği aşılırsa kare 'donmuş' sayılır; VO güncelleme kesilir, EKF yalnızca kinematik predict adımıyla konumu üretmeye devam eder. SSIM eşiği 0.995 başlangıç değeri olup gerçek donma ile yüksek benzerlikli (ama farklı) kareler arasındaki optimum nokta TEKNOFEST örnek video kalibrasyonuyla kesinleştirilecektir. Eşik çok yüksek tutulursa yavaş hareket eden drone kareleri yanlış 'donmuş' sayılır; çok düşük tutulursa gerçek donmalar atlanır.
+3.2.3. Görev 2: Pozisyon Kestirimi – Kinematik EKF + Semantik Ölçek Kurtarma
+Sistemin GPS-denied pozisyon tespiti iki bileşene dayanmaktadır: Kinematik EKF (tahmin katmanı) ve Semantik Ölçek Kurtarma – SSR (mutlak güncelleme katmanı).
+Kinematik EKF Mimarisi:
+Isınma Fazı (GPS Sağlıklı – İlk 450 Kare): GPS referans koordinatlarının ardışık türevleri alınarak drone'un anlık hız (Vx, Vy, Vz) ve ivme (Ax, Ay, Az) vektörleri hesaplanır. Bu vektörler Sabit İvme (Constant Acceleration) kinematik modeline oturtulur.
+Tahmin Adımı (GPS Kesilince): EKF'nin predict adımı IMU verisi yerine kalibre edilmiş kinematik modele dayanır. Önceki konum + V·Δt + ½·A·Δt² ile fiziksel konum tahmini üretilir. Kovaryans matrisi bu tahminin belirsizliğini izler.
+Göreli Güncelleme (Her Karede): ORB-SLAM2'nin ürettiği bağıl (relative) yer değiştirme vektörü EKF'ye ölçüm olarak verilir. Anlık scale katsayısı bu vektörü metrik uzaya taşır.
+Mutlak Güncelleme (SSR Tetiklenince): Yalnızca ID:2 (UAP) veya ID:3 (UAİ) tespitinde SSR çalışır ve EKF kovaryansı sıfırlanır (absolute reset). Bilinmeyen varyansa sahip araç boyutları bu güncelleme için asla kullanılmaz.
+Görüntü Donması: Kare donduğunda VO güncellemesi kesilir; EKF yalnızca kinematik modelle predict üretir. Görüntü geri geldiğinde ORB-SLAM2 relocalization yapar ve EKF tekrar beslenir.
+Semantik Ölçek Kurtarma (SSR) – Matematiksel Formülasyon:
+Yang & Scherer (IEEE T-RO 2019) [H] CubeSLAM, monoküler kamerada bilinen fiziksel boyutlu nesnelerin ground plane kısıtıyla ölçek belirsizliğini çözdüğünü kanıtlamıştır. Pop-up SLAM (Yang et al., IROS 2016) [I] yer düzlemi referansı kullanımının teorik temelini atmıştır. Frost et al. (2018) / EAO-SLAM (IROS 2020) [J], semantik nesne tespitlerinin SLAM'e entegrasyonuyla drift kompanzasyonunu göstermiştir.
+SSR Hesaplama Adımları:
+Adım 1 – Ray Casting: YOLOv8m'den dönen UAP/UAİ bounding box köşeleri (u, v) alınır. Kamera iç parametre matrisinin tersi K⁻¹ ile normalize görüntü düzlemine yansıtılır:  d = K⁻¹ · [u, v, 1]ᵀ
+Adım 2 – Dünya Koordinatına Dönüşüm: ORB-SLAM2'nin o anki rotasyon matrisi R ile ışın dünya uzayına çevrilir:  d_world = Rᵀ · d
+Adım 3 – Ground Plane Kesişimi: Kamera 70-90° aşağı baktığından Z=0 düzlemi varsayılır. Her bounding box köşesi için ışın-düzlem kesişim noktaları (X_vo, Y_vo, 0) hesaplanır.
+Adım 4 – Ölçek Katsayısı: İki köşe noktası arasındaki Öklid mesafesi D_vo, ORB-SLAM2'nin ölçeksiz dünyasındaki UAP çapıdır. Fiziksel çap 4.5 m bilindiğinden:  Scale = 4.5 / D_vo
+Adım 5 – Güncelleme Filtresi: Hesaplanan Scale değeri doğrudan uygulanmaz; 1D Moving Average kuyruğuna eklenir. Pencere boyutu N=10 kare seçilmiştir: bu değer 7.5 FPS'de yaklaşık 1.3 saniyelik pencereye karşılık gelir; hem ani bounding box gürültüsünü düzleştirmek hem de gerçek irtifa değişimlerine yeterli tepki hızı vermek arasındaki denge simülasyon testleriyle doğrulanacaktır. Bounding box belirsizliğinin kovaryansı Z² ile orantılı modellenmesi perspektif projeksiyon teoreminden türetilmiştir: sabit fiziksel nesne (4.5 m) için piksel uzaklığı D_px ≈ f·D_phy/Z formülüyle Z ile ters orantılıdır; dolayısıyla Z arttıkça piksel ölçümünün metrik karşılığındaki belirsizlik Z² ile büyür. Fiziksel olarak imkansız Scale sıçramaları (örn. drone'un 1 saniyede 10 m düşmesi) RANSAC benzeri outlier filtresiyle reddedilir.
+3.2.4. Görev 3: Görüntü Eşleme – XoFTR + LightGlue + Kalman Tracker
+Tuzcuoğlu et al. (CVPRW 2024) [6] XoFTR, masked image modeling ve pseudo-thermal artırmayla TIR-visible eşleme için geliştirilmiş; LGHD ve RoadScene benchmark'larında LoFTR ve SuperGlue'yu geçmiştir.
+Birincil: XoFTR [6] – Çapraz modalite transformatör. ONNX + TensorRT optimize.
+İkincil: LightGlue [D] (ICCV 2023) – SuperGlue'dan ~3× hızlı; CLAHE normalizasyonu ile termal-RGB modalite farkı azaltılır. CLAHE clip_limit değeri o karenin histogram dağılımına (sis yoğunluğuna) göre adaptif olarak ayarlanır; statik parametre kullanılmaz.
+Üçüncül: Kalman Tracker – Eşleme algoritmaları başarısız olursa nesnenin son bilinen konumu kamera ego-motion (Process C'den VO çıktısı) kullanılarak kompanse edilir ve bounding box tahmin edilir. Tahminler düşük güven skoru ile işaretlenir.
+3.3. Sistem Mimarisi ve Akış Şemaları (5 Puan)
+Şekil 1: 4-Process Asenkron Mimari
+Python GIL (Global Interpreter Lock), threading modülünde CPU-bound işlemlerin gerçek paralel çalışmasını engeller. I/O parse, ORB feature extraction ve GPU inference aynı interpreter üzerinde serialized olur; bu durum 133 ms bütçesini aşırı zorlar. Çözüm: multiprocessing.Process + multiprocessing.shared_memory (zero-copy IPC) ile GIL izolasyonu.
+Şekil 2: SSR – Ray Casting Geometrisi
+Şekil 3: Veri Akış Diyagramı – Tek Kare
+Şekil 4: GPS/VO Geçiş Mekanizması
+Şekil 5: İniş Alanı Uygunluk Hiyerarşisi
+4. ÖZGÜNLÜK (10 Puan)
+Özgünlük, hazır modellerin parametrik ince ayarlarında değil; yarışmanın somut donanım ve şartname kısıtlarına yapılan mimari adaptasyonlarda yatmaktadır.
+Semantik Ölçek Kurtarma (SSR) – IMU-Free Scale Recovery:
+IMU verisi olmayan monoküler kamerada scale drift problemini çözmek için şartnamede fiziksel boyutu kesin olarak tanımlı (4.5 m) UAP/UAİ işaretlerini 'Görsel Çapa' olarak kullanan özgün bir Ray Casting + Ground Plane + Moving Average + Kinematik EKF pipeline tasarlanmıştır. CubeSLAM [H], Pop-up SLAM [I] ve EAO-SLAM [J] teorik temellerini pratiğe uygulayan ve yalnızca yarışmanın fiziksel referans nesnesiyle çalışan bu entegrasyon literatürdeki benzerlerinden ayrışmaktadır.
+Piksel Yoğunluk Tabanlı Anomali Tespiti:
+YOLO'nun sınıf tanımadığı nesneleri (kaya, moloz, tanımsız cisim) tespit edemeyen körlüğünü aşmak için UAP/UAİ iç ROI üzerinde doku homojenlik analizi ve Ellipse Fitting tabanlı kısmi görünürlük kontrolü tasarlanmıştır. Bu yaklaşım, şartnamenin 'detected_undefined_objects' alanını algoritmik olarak doldurmanın tek güvenilir yoludur.
+Kinematik EKF ile IMU-Simüle Navigasyon:
+GPS kesildiğinde IMU verisi olmaksızın drone'un uçuş dinamiklerini GPS ısınma fazından kalibre edilmiş V ve A vektörleriyle modelleme ve EKF tahmin adımında bu kinematik modeli kullanma yaklaşımı, VINS-Mono gibi IMU gerektiren yöntemlerin bu yarışmada uygulanamaz olduğu kısıtta özgün bir mühendislik çözümüdür.
+Ground Footprint + Perspektif Yanılgısı Ayrımı:
+İniş uygunluğunu IoU tabanlı kutu kesişimi yerine nesnenin yere temas noktası (bounding box alt kenar orta noktası) üzerinden belirlemek ve perspektif yanılgısı durumunu gerçek ihlalden ayıran iki aşamalı karar mantığı şartname gereksinimini matematiksel düzeyde karşılayan özgün bir post-processing katmanıdır.
+4-Process Zero-Copy Mimari:
+Python GIL kısıtını multiprocessing.shared_memory ile zero-copy IPC kullanarak çözmek ve GPU sürecini (Process B) yalnızca matris işlemleriyle sınırlandırarak JSON yönetimi ve timeout mantığını bağımsız Process D'ye taşımak bu yarışma ortamına özgü bir sistem mühendisliği kararıdır.
+5. PROJE TAKVİMİ (10 Puan)
+6. SONUÇLAR VE İNCELEME (30 Puan)
+Sistem geliştirme aşamasında olduğundan bu bölümde literatür destekli ön bulgular, tasarım kararlarının gerekçeleri, tespit edilen hatalar ve bunlara geliştirilen çözümler yer almaktadır.
+Literatür Destekli Performans Tahminleri:
+Tespit Edilen Hatalar ve Çözümleri (Ablation):
+Bilinen Sınırlılıklar:
+Ground Plane varsayımı (Z=0): Köprü, eğimli arazi veya yüksek yapı üzerinde hatalı scale üretebilir. Simülasyon ölçümüyle tolerans sınırı belirlenecektir.
+Kinematik EKF Sabit İvme (CA) Modeli: CA modeli ani yaw veya pitch manevralarında drone'un gerçek ivmesini yansıtmaz. GPS ısınma fazından kalibre edilen ortalama ivme bu anlık değişimleri yakalayamaz; GPS kesilmesinden sonra manevralı uçuşta RMSE artışı beklenmektedir. Bu sınırlılık simülasyonda ölçülerek gerekirse Constant Turn Rate and Acceleration (CTRA) modeli değerlendirilecektir.
+ORB-SLAM2 Loop Closure: En güçlü drift önleme mekanizması olan loop closure, aynı bölgenin yeniden ziyaret edilmesine bağlıdır. 5 dakikalık tek yönlü uçuşta loop closure tetiklenme ihtimali düşüktür; bu durumda drift azaltma yalnızca SSR absolute reset ve kinematik modele dayanmaktadır.
+Tracking Lost – Relocalization Başarısızlığı: ORB-SLAM2 tamamen bilinmeyen bir sahnede (düşük doku, aşırı hız) relocalization yapamayabilir. Bu durumda Process C sıfır ötelemeli son geçerli poz döndürür; EKF yalnızca kinematik modelle devam eder ve RMSE artmaya başlar. Güven kovaryansı eşiği (σ > 5 m) aşılınca son güvenilir değer gönderilir.
+Düşük Dokulu Zemin: Çimen, su yüzeyi, homojen asfalt gibi düşük dokulu zeminlerde ORB-SLAM2 yeterli feature extract edemez. Bu durum FAST threshold dinamik ayarıyla kısmen hafifletilir ancak tamamen önlenemez. Kritik oturumlarda bu risk yüksek olursa son güvenilir SSR skalası korunur.
+Scooter Geçiş Anı: Sürücünün scooter'a biniş/iniş geçiş karesinde bounding box boyutu orta banttadır (ne tam sürücülü ne tam sürücüsüz). Bu belirsizlik bölgesinde (%40–%60 confidence) karar önceki 3 karenin temporal oyu (ByteTrack trajectory) ile alınır; çoğunluk hangi etiketi veriyorsa o benimsenir.
+Çakışan İhlal Mekanizmaları Öncelik Sırası: UAP/UAİ üzerinde hem YOLO tespiti (taşıt/insan) hem anomali filtresi eş zamanlı tetiklenirse öncelik şu hiyerarşiyi izler: (1) Kısmi görünürlük → anında Uygun Değil. (2) YOLO tespiti (ID:0/1) Ground Footprint içinde → Uygun Değil. (3) Anomali filtresi tetiklendi → Uygun Değil. Üç koşul da negatifse → Uygun. Bu sıra hem RMSE hem mAP açısından en tutucu (false negative öncelikli) stratejiyi uygular.
+SAHI aktif karelerde latency 80–100 ms; darboğaz oluşursa dilim sayısı 4'e düşürülecektir.
+Kinematik EKF kalibrasyonu ilk 450 karenin GPS kalitesine bağlıdır. Kötü GPS sinyali V/A vektörlerini hatalı kalibre edebilir.
+7. KAYNAKÇA (5 PUAN)
+8. GENEL RAPOR DÜZENİ (5 PUAN)

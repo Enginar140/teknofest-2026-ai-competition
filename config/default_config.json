@@ -1,0 +1,33 @@
+{
+  "system": {
+    "name": "TEKNOFEST 2026 AI System",
+    "version": "1.0.0",
+    "theme": "dark"
+  },
+  "camera": {
+    "selected": "rgb_2024",
+    "cameras": {}
+  },
+  "models": {
+    "task1": {
+      "selected": "yolov8l",
+      "options": []
+    },
+    "task2": {
+      "selected": "vo_ekf",
+      "options": []
+    },
+    "task3": {
+      "selected": "xoftr",
+      "options": []
+    }
+  },
+  "server": {
+    "url": "http://127.0.0.25:5000",
+    "timeout": 30
+  },
+  "recording": {
+    "enabled": true,
+    "output_dir": "./results/"
+  }
+}
